@@ -10,7 +10,7 @@
     <div class="txt">
 	    ¡Chiquita preciosa hermosa, ten una buena noche :3!
     </div>
-    <audio controls autoplay>
+    <audio id="audio" autoplay>
       <source src="Demi.mp3" type="audio/mpeg">
     </audio>
     <div class="night">
@@ -35,6 +35,26 @@
       <div class="shooting_star"></div>
       <div class="shooting_star"></div>
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          var audio = document.getElementById('audio');
+
+          // Agrega un evento de clic al documento
+          document.addEventListener('click', function() {
+              // Verifica si el audio ya está pausado o detenido
+              if (audio.paused || audio.ended) {
+                  // Inicia la reproducción del audio
+                  audio.play();
+              }
+          });
+
+          audio.addEventListener('ended', function() {
+              // Reinicia la reproducción del audio
+              audio.currentTime = 0; // Reinicia la reproducción al principio
+              audio.play(); // Reproduce el audio nuevamente
+          });
+      });
+  </script>
 
 
   </body>
